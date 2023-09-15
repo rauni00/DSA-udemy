@@ -46,6 +46,48 @@ let sameR = (arr1, arr2) => {
 // sameR([1, 2, 3], [1, 4, 9]);
 // console.log('🚀 ~ file::', sameR([1, 2, 3], [1, 46, 9]));
 
-let ar = [];
-ar[555666666685 ** 4] = 5;
-console.log(ar);
+// problem 2
+//ANAGRAMS
+// inputs ("","")=>true
+//  ("anagram",nagram)=>true
+// ("rat","car")=>false
+// make a hashmapop
+
+const anagram = (inp1, inp2) => {
+  if (inp1.length !== inp2.length) {
+    return false;
+  } else if (inp1.length === inp2.length && inp1.length === 1) return true;
+  else {
+    // let map = new Map();
+    // for (let i = 0; i < inp1.length; i++) {
+    //   if (map.has(inp1[i])) {
+    //     map.set(inp1[i], map.get(inp1[i] + 1));
+    //   } else {
+    //     map.set(inp1[i], 1);
+    //   }
+    // }
+
+    let obj1 = {};
+    for (let element of inp1) {
+      if (obj1.hasOwnProperty(element)) {
+        obj1[element] = obj1[element] + 1;
+      } else {
+        obj1[element] = 1;
+      }
+    }
+    // ye kaam object se bhi kr skta haiha usi se krna hai
+    // but map se fast hota hai
+    // ruk object se krta hu
+    // Tc dono me same hai O(n) but maps are fast
+    for (let i = 0; i < inp1.length; i++) {
+      if (!obj1.hasOwnProperty(inp1[i]) || !obj1.hasOwnProperty(inp1[i]))
+        return false;
+    }
+    return true;
+  }
+};
+
+console.log(
+  "🚀 ~ file: frequency-counters-patther.js:81 ~ anagram('rat', 'car'):",
+  anagram('luha3', 'rahul')
+);
