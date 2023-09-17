@@ -75,19 +75,34 @@ const anagram = (inp1, inp2) => {
         obj1[element] = 1;
       }
     }
-    // ye kaam object se bhi kr skta haiha usi se krna hai
-    // but map se fast hota hai
-    // ruk object se krta hu
-    // Tc dono me same hai O(n) but maps are fast
-    for (let i = 0; i < inp1.length; i++) {
-      if (!obj1.hasOwnProperty(inp1[i]) || !obj1.hasOwnProperty(inp1[i]))
-        return false;
-    }
-    return true;
+    // for (let i = 0; i < inp1.length; i++) {
+    //   if (!obj1.hasOwnProperty(inp1[i]) || !obj1.hasOwnProperty(inp1[i]))
+    //     return false;
+    // }
+    // return true;
   }
 };
 
-console.log(
-  "🚀 ~ file: frequency-counters-patther.js:81 ~ anagram('rat', 'car'):",
-  anagram('luha3', 'rahul')
-);
+// Solution for anagram with frequency counter
+const validateAnagram = (first, second) => {
+  if (first.length !== second.length) {
+    return false;
+  }
+  const lookup = {};
+  for (let value of first) {
+    if (lookup[value]) {
+      lookup[value] += 1;
+    } else lookup[value] = 1;
+  }
+  for (let value of second) {
+    if (!lookup[value]) {
+      return false;
+    } else lookup[value] -= 1;
+  }
+  return true;
+};
+
+// console.log(
+//   "🚀 ~ file: frequency-counters-patther.js:104 ~ validateAnagram('rahul', 'lahuk'):",
+//   validateAnagram('rahul', 'raluh')
+// );
